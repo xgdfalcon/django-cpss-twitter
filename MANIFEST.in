@@ -1,0 +1,5 @@
+include LICENSE.md
+include README.md
+recursive-include twitter-django/static *
+recursive-include twitter-django/templates *
+recursive-include docs *
