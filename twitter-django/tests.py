@@ -16,6 +16,7 @@ Written by Larry Latouf (xgdfalcon@gmail.com)
 from django.test import TestCase
 from django.test.client import RequestFactory
 from .models.client import TwitterClientOption
+from datetime import datetime
 import os
 
 CONSUMER_KEY = os.environ['CONSUMER_KEY'] 
@@ -37,7 +38,9 @@ class TwitterDjangoTestCase(TestCase):
 
     def test_post_status(self):
         collection = TwitterClientOption.objects.get(twitter_user_name=USER_ID)
-        result = collection.post_status(CONTENT)
+        now = datetime.now()
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        result = collection.post_status(dt_string + " - " + CONTENT)
         print(result)
 
         
